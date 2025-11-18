@@ -14,6 +14,8 @@ import { neighborhood } from '../../../../../environment/environment';
 export class PlistBlogPavon {
 
   oPage: IPage<Blog> | null = null;
+  numPage: number=0;
+  numRpp: number=5;
 
   constructor(private blogService: BlogService, private oBotoneraService: BotoneraService) { }
 
@@ -24,12 +26,12 @@ export class PlistBlogPavon {
   }
 
   getPage() {
-    this.blogService.getPage(1, 3).subscribe({
+    this.blogService.getPage(this.numPage, this.numRpp).subscribe({
       next: (data: IPage<Blog>) => {
         this.oPage = data;
         // queremos que se calcule la botonera
         this.oBotonera = this.oBotoneraService.getBotonera(this.oPage.number, this.oPage.totalPages,neighborhood);
-
+        console.log("Botonera..." + this.oBotonera)
       },
       error: (error) => {
         console.error(error);
@@ -37,6 +39,13 @@ export class PlistBlogPavon {
     });
   }
 
+
+
+
+  goToPage(numPage:number){
+      this.numPage=numPage;
+      this.getPage();
+  }
 
 
 }

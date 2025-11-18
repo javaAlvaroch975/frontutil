@@ -1,30 +1,47 @@
 <h1>Blog</h1>
 
-<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-    @for (strBotonera of oBotonera; track strBotonera ) {
-    <button type="button" class="btn btn-primary">{{ strBotonera }}</button>
-    }
-</div>
-
+<nav>
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="numPage==0">
+        <a class="page-link" (click)="goToPage(numPage-1)">
+            Previous
+        </a>
+    </li>
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      @for (strBotonera of oBotonera; track strBotonera ) { @if (strBotonera=='...') {
+      <li class="page-item"><span class="page-link">{{strBotonera}}</span></li>
+      }@else {
+      <li class="page-item" [class.active]="-(-strBotonera) == (numPage + 1)">
+        <a class="page-link" (click)="goToPage(-(-strBotonera)-1)"> {{strBotonera}} </a>
+      </li>
+      } }
+      <li class="page-item" [class.disabled]="numPage+1== oPage?.totalPages">
+        <a class="page-link" (click)="goToPage(numPage+1)">
+            Next
+        </a>
+    </li>
+    </div>
+  </ul>
+</nav>
 <table class="table">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Título</th>
-            <th scope="col">Etiquetas</th>
-            <th scope="col">Creación</th>
-            <th scope="col">Actualización</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (oBlog of oPage?.content; track oBlog.id ) {
-        <tr>
-            <th scope="row">{{ oBlog.id }}</th>
-            <td>{{ oBlog.titulo }}</td>
-            <td>{{ oBlog.etiquetas }}</td>
-            <td>{{ oBlog.fechaCreacion }}</td>
-            <td>{{ oBlog.fechaModificacion }}</td>
-        </tr>
-        }
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Título</th>
+      <th scope="col">Etiquetas</th>
+      <th scope="col">Creación</th>
+      <th scope="col">Actualización</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (oBlog of oPage?.content; track oBlog.id ) {
+    <tr>
+      <th scope="row">{{ oBlog.id }}</th>
+      <td>{{ oBlog.titulo }}</td>
+      <td>{{ oBlog.etiquetas }}</td>
+      <td>{{ oBlog.fechaCreacion }}</td>
+      <td>{{ oBlog.fechaModificacion }}</td>
+    </tr>
+    }
+  </tbody>
 </table>

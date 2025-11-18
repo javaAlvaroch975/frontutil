@@ -18,9 +18,9 @@ export class BotoneraService {
             botonera.push(i.toString())
           } else if (i==numPages){  //ÚLTIMA
             botonera.push(i.toString())
-          } else if (i>=paginaActual-neighborhood){  //VECINDAD POR ABAJO
+          } else if (i>=paginaActual-neighborhood && i<paginaActual){  //VECINDAD POR ABAJO
             botonera.push(i.toString())
-          } else if (i<=paginaActual+neighborhood){  //VECINDAD POR ARRIBA
+          } else if (i<=paginaActual+neighborhood && i>paginaActual){  //VECINDAD POR ARRIBA
             botonera.push(i.toString())
           } else if (i == paginaActual - neighborhood - 1){  //ABREVIACIÓN DE PÁGINAS POR ABAJO
             botonera.push('...')
