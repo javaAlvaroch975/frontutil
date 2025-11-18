@@ -3,6 +3,7 @@ import { BlogService } from '../../../../../service/blog';
 import { IPage } from '../../../../../model/plistmodel';
 import { Blog } from '../../../../../model/blog';
 import { BotoneraService } from '../../../../../service/botonera';
+import { neighborhood } from '../../../../../environment/environment';
 
 @Component({
   selector: 'app-plist',
@@ -23,11 +24,11 @@ export class PlistBlogPavon {
   }
 
   getPage() {
-    this.blogService.getPage(6, 3).subscribe({
+    this.blogService.getPage(1, 3).subscribe({
       next: (data: IPage<Blog>) => {
         this.oPage = data;
         // queremos que se calcule la botonera
-        this.oBotonera = this.oBotoneraService.getBotonera(this.oPage.number, this.oPage.totalPages);
+        this.oBotonera = this.oBotoneraService.getBotonera(this.oPage.number, this.oPage.totalPages,neighborhood);
 
       },
       error: (error) => {

@@ -12,8 +12,8 @@ export class BlogService {
 
   constructor(private oHttp: HttpClient){}
   
-  getPage(page: number, size:number): Observable<IPage<Blog>> {
-    return this.oHttp.get<IPage<Blog>>(serverURL + `/blog?page=${page}&${size}`) //DEVUELVE OBSERBABLE
+  getPage(page: number, rpp:number): Observable<IPage<Blog>> {
+    return this.oHttp.get<IPage<Blog>>(serverURL + `/blog?page=${page}&${rpp}`) //DEVUELVE OBSERBABLE, NO SABERLO DEPRIME A RAFA
   }
 
 }
