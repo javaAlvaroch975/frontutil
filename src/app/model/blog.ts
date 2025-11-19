@@ -1,9 +1,9 @@
-export interface Blog {
+export interface Usuario {
   id: number
-  titulo: string
-  contenido: string
-  etiquetas: string
-  fechaCreacion: string
-  fechaModificacion: any
+  nombre: string
+  email: string
+  telefono: string
+  fechaRegistro: string
+  activo: boolean
 }
 

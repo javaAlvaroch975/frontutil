@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { BlogService } from '../../../../../service/blog';
+import { UsuarioService } from '../../../../../service/blog';
 import { IPage } from '../../../../../model/plistmodel';
-import { Blog } from '../../../../../model/blog';
+import { Usuario } from '../../../../../model/blog';
 import { BotoneraService } from '../../../../../service/botonera';
 import { neighborhood } from '../../../../../environment/environment';
 import { BotoneraComponent } from "../../../botonera/botonera";
@@ -12,13 +12,13 @@ import { BotoneraComponent } from "../../../botonera/botonera";
   templateUrl: './plist.html',
   styleUrl: './plist.css',
 })
-export class PlistBlogPavon {
-  oPage: IPage<Blog> | null = null;
+export class PlistUsuarioAlvaro {
+  oPage: IPage<Usuario> | null = null;
   numPage: number = 0;
   numRpp: number = 5;
   oBotonera: string[] = [];
 
-  constructor(private blogService: BlogService, private oBotoneraService: BotoneraService) { }
+  constructor(private usuarioService: UsuarioService, private oBotoneraService: BotoneraService) { }
 
   
 
@@ -27,8 +27,8 @@ export class PlistBlogPavon {
   }
 
   getPage() {
-    this.blogService.getPage(this.numPage, this.numRpp).subscribe({
-      next: (data: IPage<Blog>) => {
+    this.usuarioService.getPage(this.numPage, this.numRpp).subscribe({
+      next: (data: IPage<Usuario>) => {
         this.oPage = data;
         // queremos que se calcule la botonera
         this.oBotonera = this.oBotoneraService.getBotonera(this.oPage.number, this.oPage.totalPages,neighborhood);

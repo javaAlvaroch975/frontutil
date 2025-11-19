@@ -1,6 +1,6 @@
 import { Component, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { IPage } from '../../../model/plistmodel';
-import { Blog } from '../../../model/blog';
+import { Usuario } from '../../../model/blog';
 
 @Component({
   selector: 'app-botonera',
@@ -10,7 +10,7 @@ import { Blog } from '../../../model/blog';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BotoneraComponent {
-  oPage = input.required<IPage<Blog> | null>();
+  oPage = input.required<IPage<Usuario> | null>();
   oBotonera = input.required<string[]>();
   numPage = input.required<number>();
 

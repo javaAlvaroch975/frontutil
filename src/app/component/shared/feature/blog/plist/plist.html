@@ -1,4 +1,4 @@
-<h1>Blog</h1>
+<h1>Usuarios</h1>
 
 <app-botonera
   [oPage]="oPage"
@@ -10,20 +10,22 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Título</th>
-      <th scope="col">Etiquetas</th>
-      <th scope="col">Creación</th>
-      <th scope="col">Actualización</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Email</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Fecha Registro</th>
+      <th scope="col">Estado</th>
     </tr>
   </thead>
   <tbody>
-    @for (oBlog of oPage?.content; track oBlog.id ) {
+    @for (oUsuario of oPage?.content; track oUsuario.id ) {
     <tr>
-      <th scope="row">{{ oBlog.id }}</th>
-      <td>{{ oBlog.titulo }}</td>
-      <td>{{ oBlog.etiquetas }}</td>
-      <td>{{ oBlog.fechaCreacion }}</td>
-      <td>{{ oBlog.fechaModificacion }}</td>
+      <th scope="row">{{ oUsuario.id }}</th>
+      <td>{{ oUsuario.nombre }}</td>
+      <td>{{ oUsuario.email }}</td>
+      <td>{{ oUsuario.telefono }}</td>
+      <td>{{ oUsuario.fechaRegistro }}</td>
+      <td>{{ oUsuario.activo ? 'Activo' : 'Inactivo' }}</td>
     </tr>
     }
   </tbody>
